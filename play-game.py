@@ -17,17 +17,12 @@ while not game_over:
         else:
             print('Please, choose one of the three options.')
 
-    # printando escolhas
-    print(f'your pick: {user_input}')
-    print(f"machine's pick: {computer_option}")
-
     # comparando
     user_wins = False
     computer_wins = False
+    tie = False
 
-    if user_input == computer_option: #empate
-        print('its a draw!')
-    elif user_input == 'rock':
+    if user_input == 'rock':
         if computer_option == 'paper':
             computer_wins = True
         else:
@@ -37,23 +32,31 @@ while not game_over:
             computer_wins = True
         else:
             user_wins = True
-    elif user_input == 'rock':
-        if computer_option == 'paper':
+    elif user_input == 'scissors':
+        if computer_option == 'rock':
             computer_wins = True
         else: 
             user_wins = True
+    elif user_input == computer_option: #empate
+        tie = True
+
+    # printando escolhas
+    print(f'\nyour pick: {user_input}')
+    print(f"machine's pick: {computer_option}")
 
     # parabenizando ganhador
     if user_wins:
-        print('Congratulations, you won!')
+        print('\nCongratulations, you won!')
     elif computer_wins:
-        print('You lose :(')
+        print('\nYou lose :(')
+    elif tie:
+        print('\nits a draw!')
 
     # perguntando se ele quer continuar ou parar de jogar
     while True:
-        continue_game = input('Want to play again? (y/n)\n')
+        continue_game = input('\nWant to play again? (y/n)\n')
         if continue_game == 'n':
-            print('Thank you for playing!')
+            print('\nThank you for playing!')
             game_over = True
             break
         if continue_game == 'y':
